@@ -1,5 +1,7 @@
 # CCC101
-This repository contains my CCC101 activities, algorithms, and C programs.
+
+## Repository Purpose
+- This repository is for my CCC101 Lab Activities
 
 ## Activities
 - Activity 01: Problem Solving and Version Control
@@ -9,5 +11,5 @@ Each activity has its own folder containing the required files and explanations.
 
 ## Details
 - Name : Lucky James Porras
-- Section : B182
+- Section : BSCA 182
 - Course Code : C
