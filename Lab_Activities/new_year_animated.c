@@ -16,6 +16,10 @@ static void setCursorPosition(int x, int y) {
     pos.Y = (SHORT)y;
     SetConsoleCursorPosition(hOut, pos);
 }
+static void gotoxy(int dx, int dy){
+    COORD p = {(SHORT)dx, (SHORT)dy};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), p);
+}
 
 static void setColor(int color) {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -221,8 +225,43 @@ static void celebration(void) {
     }
 }
 
+static void animateName(void) {
+    char name[] = "*";
+    const int fx = 235;
+    const int fy = 40;
+    int dx;
+    int dy;
+
+    setColor(11);
+    for (dx = 0; dx <= fx; dx++) {
+        gotoxy(dx, 0);
+        printf("%s", name);
+        fflush(stdout);
+        sleepMs(10);
+    }
+    for (dy = 1; dy <= fy; dy++) {
+        gotoxy(fx, dy);
+        printf("%s", name);
+        fflush(stdout);
+        sleepMs(10);
+    }
+    for (dx = fx; dx >= 0; dx--) {
+        gotoxy(dx, fy);
+        printf("%s", name);;
+        fflush(stdout);
+        sleepMs(10);
+    }
+    for (dy = fy; dy > 0; dy--) {
+        gotoxy(0, dy);
+        printf("%s", name);
+        fflush(stdout);
+        sleepMs(10);
+    }
+}
+
 int main(void) {
     hideCursor();
+    animateName();
     countdown();
     clearScreen();
     setColor(14);
